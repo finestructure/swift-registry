@@ -22,8 +22,8 @@ let package = Package(
                 .product(name: "ZIPFoundation", package: "ZIPFoundation"),
                 .product(name: "AnyCodable", package: "AnyCodable")
             ]),
-        .target(
-            name: "swift-registry",
+        .executableTarget(
+            name: "registry",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "AnyCodable", package: "AnyCodable"),
