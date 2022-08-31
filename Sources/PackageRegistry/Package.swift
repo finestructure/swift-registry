@@ -13,7 +13,8 @@ public struct Package {
         }
 
         do {
-            let scope = description.prefix(upTo: separatorIndex)
+            let prefix = description.prefix(upTo: separatorIndex)
+            let scope = prefix.hasPrefix("@") ? prefix : "@" + prefix
             guard scope.count <= 40,
                   case let (initial, rest)? = scope.headAndTail,
                   initial == "@",
