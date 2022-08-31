@@ -13,8 +13,9 @@ struct ListReleasesEndpoint: Responder {
 
             let payload = [
                 "releases": [String: [String: String]](uniqueKeysWithValues: releases.compactMap { release in
-                    guard let url = request.baseURL?.appendingPathComponent("\(release.package)")
-                                                    .appendingPathComponent("\(release.version)")
+                    guard let url = URL(string: Application.baseURL)?
+                        .appendingPathComponent("\(release.package)")
+                        .appendingPathComponent("\(release.version)")
                     else { return nil }
 
                     return ("\(release.version)", ["url": url.absoluteString])
